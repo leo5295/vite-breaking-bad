@@ -13,7 +13,7 @@ export default {
 
 <template lang="">
   <div class="container">
-    <CharacterCard />
+    <div v-for="(item, index) in store.charactersList" :key="index" :character="item"></div>
   </div>
 </template>
 

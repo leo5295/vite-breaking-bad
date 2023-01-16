@@ -2,7 +2,7 @@
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import CharactersList from './components/CharactersList.vue';
-
+import { store } from './store.js'
 
 export default {
   components: {
@@ -19,8 +19,8 @@ export default {
   },
   methods: {
     getCharacters() {
-      axios.get(this.url).then((response) => {
-        this.CharactersList = response.data.data;
+      axios.get(store.url).then((response) => {
+        store.CharacterList = response.data.data;
         console.log(response.data.data)
       })
 
