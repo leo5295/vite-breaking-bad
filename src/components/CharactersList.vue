@@ -6,14 +6,14 @@ export default {
     CharacterCard
   },
   props: {
-    characters: Array
+    Characters: Array
   }
 }
 </script>
 
 <template lang="">
   <div class="container">
-    
+    <CharacterCard />
   </div>
 </template>
 

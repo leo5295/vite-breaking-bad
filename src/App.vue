@@ -3,6 +3,7 @@ import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import CharactersList from './components/CharactersList.vue';
 
+
 export default {
   components: {
     AppHeader, CharactersList
@@ -33,9 +34,10 @@ export default {
 <template lang="">
   <div>
     <AppHeader message="yugioh" />
+    <CharactersList />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use './assets/styles/generals.scss'
+@use './assets/styles/generals.scss';
 </style>
