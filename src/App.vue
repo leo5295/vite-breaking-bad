@@ -1,8 +1,21 @@
+<template>
+  <div>
+    <AppHeader message="yugioh" />
+    <div>
+      <SelectBox @changeArchetype="changeArchetype" />
+    </div>
+  </div>
+  <div>
+    <CharactersList :Characters="CharactersList" />
+  </div>
+</template>
+
 <script>
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import CharactersList from './components/CharactersList.vue';
 import SelectBox from './components/selectedBox.vue';
+import { store } from './store.js'
 
 
 export default {
@@ -12,46 +25,26 @@ export default {
   data() {
     return {
       CharactersList: [],
-      url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Alien',
-      selectedArchetype: 'Alien'
+      url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
     }
   },
   created() {
     this.getCharacters();
-    this.getArchetypes();
-
   },
   methods: {
     getCharacters() {
-      axios.get(this.url).then((response) => {
+      axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.selectedArchetype}`).then((response) => {
         this.CharactersList = response.data.data;
-      })
-    },
-    getArchetypes() {
-      axios.get(`https://db.ygoprodeck.com/api/v7/archetypes.php`).then((response) => {
-        this.archetypes = response.data.data;
       });
+    },
+    changeArchetype(archetype) {
+      store.selectedArchetype = archetype;
+      this.getCharacters();
     }
   }
 }
-
 </script>
- 
-<template>
-  <div>
-    <AppHeader message="yugioh" />
-    <div>
-      <select v-model="selectedArchetype" @change="changeArchetype">
-        <option value="Alien">Alien</option>
-        <option value="Dark Magician">Dark Magician</option>
-        <option value="Elemental HERO">Elemental HERO</option>
-        <option value="Gravekeeper's">Gravekeeper's</option>
-      </select>
-    </div>
-  </div>
-  <CharactersList :Characters="CharactersList" />
-</template>
- 
+
 <style lang="scss" scoped>
 @use './assets/styles/generals.scss';
 </style>
