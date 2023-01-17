@@ -33,6 +33,7 @@ export default {
   },
   methods: {
     getCharacters() {
+      console.log(store.selectedArchetype)
       axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.selectedArchetype}`).then((response) => {
         this.CharactersList = response.data.data;
       });

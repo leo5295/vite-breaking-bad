@@ -12,9 +12,9 @@ export default {
             selectedOption: 'Alien',
             archetypes: [
                 'Alien',
-                'Predator',
-                'Dinosaur',
-                'Dragon'
+                'Dark Magician',
+                'Blue-Eyes',
+                'Prank-Kids'
             ]
         }
     },
