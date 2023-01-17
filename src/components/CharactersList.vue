@@ -10,13 +10,13 @@ export default {
   }
 }
 </script>
-
-<template lang="">
+ 
+<template>
   <div class="container">
-    <div v-for="(item, index) in store.charactersList" :key="index" :character="item"></div>
+    <CharacterCard v-for="(item, index) in Characters" :key="index" :character="item"></CharacterCard>
   </div>
 </template>
+ 
+<style>
 
-<style lang="">
-  
 </style>
